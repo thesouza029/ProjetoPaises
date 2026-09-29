@@ -1,20 +1,11 @@
 import React, { useCallback, useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
+import { View,Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, KeyboardAvoidingView, Platform,} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import { getProfile, saveProfile, Profile } from '../services/profileStorage';
+import { getProfile, saveProfile, Profile } from '../services/perfilStorage';
 import { getFavoriteIds } from '../services/favoritesStorage';
 
-export default function PerfilScreen() {
+export default function TelaPerfil() {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');

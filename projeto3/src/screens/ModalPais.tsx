@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { SvgUri } from 'react-native-svg';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { HomeStackParamList } from '../navigation/types';
 import { iniciais, corAvatar } from '../utils/avatar';
+import { flagToPng } from '../utils/bandeira';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'InfoModal'>;
 
-export default function CountryInfoModalScreen({ route, navigation }: Props) {
+export default function ModalPais({ route, navigation }: Props) {
   const { country } = route.params;
   const [loading, setLoading] = useState(true);
-  console.log('FLAG URL:', country.flag);
+  const [flagImageError, setFlagImageError] = useState(false);
+  const flagUrl = flagToPng(country?.flag);
 
   useEffect(() => {
     let active = true;
     (async () => {
       setLoading(true);
-      // Duas chamadas reais à API, em paralelo. Cada uma falha de forma
-      // independente (nunca derruba a outra nem trava o modal).
 
       if (!active) return;
       setLoading(false);
@@ -33,18 +32,19 @@ export default function CountryInfoModalScreen({ route, navigation }: Props) {
 
   return (
     <View style={styles.backdrop}>
-      {/* Área transparente: tocar fora do card fecha o modal, sem que a
-          tela de Detalhes de trás precise ser desmontada. */}
+
       <TouchableOpacity style={styles.backdropTouchable} activeOpacity={1} onPress={close} />
 
       <View style={styles.card}>
         <View style={styles.handle} />
 
         <View style={styles.header}>
-          {country.flag ? (
-            <View style={styles.flag}>
-              <SvgUri uri={country.flag} width="100%" height="100%" />
-            </View>
+          {flagUrl && !flagImageError ? (
+            <Image
+              source={{ uri: flagUrl }}
+              style={styles.flag}
+              onError={() => setFlagImageError(true)}
+            />
           ) : (
             <View style={[styles.flag, { backgroundColor: colors.background }]}>
               <Text style={[styles.flagFallbackText, { color: colors.text }]}>

@@ -1,5 +1,5 @@
 import type { NavigatorScreenParams } from '@react-navigation/native';
-import type { Pais } from '../types/country';
+import type { Pais } from '../types/pais';
 
 // Stack: Lista -> Detalhes -> (Modais) FavoritarModal / InfoModal
 export type HomeStackParamList = {

@@ -1,18 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-  ActivityIndicator,
-  StyleSheet,
-  RefreshControl,
-} from 'react-native';
+import { View, Text, FlatList, TextInput, TouchableOpacity, ActivityIndicator, StyleSheet, RefreshControl} from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import type { HomeStackParamList } from '../navigation/types';
-import type { Pais } from '../types/country';
+import type { Pais } from '../types/pais';
 import { fetchCountries, getCachedCountries } from '../services/api';
 import { iniciais, corAvatar } from '../utils/avatar';
 
@@ -27,7 +18,7 @@ function normalizarText(value: string): string {
     .trim();
 }
 
-export default function ListaScreen({ navigation }: Props) {
+export default function TelaLista({ navigation }: Props) {
   const [paises, setPaises] = useState<Pais[]>([]);
   const [loading, setLoading] = useState(true);
   const [recarre, setRecarre] = useState(false);
@@ -39,7 +30,7 @@ export default function ListaScreen({ navigation }: Props) {
     try {
       setError(null);
       const data = await fetchCountries();
-      setPaises(data);
+      setPaises(data);  
       setOffline(false);
     } catch (err) {
 

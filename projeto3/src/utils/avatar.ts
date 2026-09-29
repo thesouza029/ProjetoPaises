@@ -1,4 +1,4 @@
-const PALETTE = [
+const ASCORES = [
   { background: '#dbeafe', text: '#1e3a8a' },
   { background: '#fef3c7', text: '#92400e' },
   { background: '#dcfce7', text: '#166534' },
@@ -17,12 +17,12 @@ function hashString(value: string): number {
   return hash;
 }
 
-/** "Brazil" -> "BR". Usado no lugar da imagem da bandeira. */
+
 export function iniciais(name: string): string {
   return name.trim().slice(0, 2).toUpperCase();
 }
 
-/** Cor sempre igual para o mesmo país (não muda a cada render). */
+
 export function corAvatar(name: string): { background: string; text: string } {
-  return PALETTE[hashString(name) % PALETTE.length];
+  return ASCORES[hashString(name) % ASCORES.length];
 }

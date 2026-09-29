@@ -7,7 +7,7 @@ import { isFavorite, toggleFavorite } from '../services/favoritesStorage';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'FavoritarModal'>;
 
-export default function FavoritarModalScreen({ route, navigation }: Props) {
+export default function FavoritarModal({ route, navigation }: Props) {
   const { id, name } = route.params;
   const [checking, setChecking] = useState(true);
   const [currentlyFavorite, setCurrentlyFavorite] = useState(false);
@@ -22,7 +22,6 @@ export default function FavoritarModalScreen({ route, navigation }: Props) {
 
   const handleConfirm = async () => {
     setSaving(true);
-    // Salva de fato no AsyncStorage ANTES de fechar o modal.
     await toggleFavorite(id);
     setSaving(false);
     navigation.goBack();

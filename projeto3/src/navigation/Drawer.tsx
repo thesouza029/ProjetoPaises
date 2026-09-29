@@ -2,9 +2,9 @@ import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import type { RootDrawerParamList } from './types';
-import MainTabs from './MainTabs';
-import PerfilScreen from '../screens/PerfilScreen';
-import SobreScreen from '../screens/SobreScreen';
+import MainTabs from './Tabs';
+import PerfilScreen from '../screens/TelaPerfil';
+import SobreScreen from '../screens/TelaSobre';
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
@@ -20,9 +20,7 @@ export default function RootDrawer() {
       <Drawer.Screen
         name="MainTabs"
         component={MainTabs}
-        // O cabeçalho de "Início" quem desenha é a própria Stack lá dentro
-        // (com o botão de menu customizado); por isso escondemos o
-        // cabeçalho do Drawer só nessa tela, pra não duplicar.
+
         options={{
           title: 'Início',
           headerShown: false,

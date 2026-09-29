@@ -4,14 +4,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { MainTabParamList } from '../navigation/types';
-import type { Pais } from '../types/country';
+import type { Pais } from '../types/pais';
 import { fetchCountries } from '../services/api';
 import { getFavoriteIds } from '../services/favoritesStorage';
 import { iniciais, corAvatar } from '../utils/avatar';
 
 type Props = BottomTabScreenProps<MainTabParamList, 'Favoritos'>;
 
-export default function FavoritosScreen({ navigation }: Props) {
+export default function TelaFavoritos({ navigation }: Props) {
   const [favorites, setFavorites] = useState<Pais[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

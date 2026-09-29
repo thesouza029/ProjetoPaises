@@ -3,12 +3,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import type { MainTabParamList } from './types';
-import HomeStackNavigator from './HomeStackNavigator';
-import FavoritosScreen from '../screens/FavoritosScreen';
+import HomeStackNavigator from './HomStack';
+import FavoritosScreen from '../screens/TelaFavoritos';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-export default function MainTabs() {
+export default function PTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -31,9 +31,7 @@ export default function MainTabs() {
         options={{
           title: 'Favoritos',
           headerShown: true,
-          // Essa aba não fica dentro de nenhuma Stack, então o cabeçalho
-          // dela nunca ganharia o botão de abrir o Drawer sozinho — por
-          // isso adicionamos manualmente aqui.
+
           headerLeft: () => <DrawerToggleButton tintColor="#0f172a" />,
           tabBarIcon: ({ color, size }) => <Ionicons name="star" size={size} color={color} />,
         }}

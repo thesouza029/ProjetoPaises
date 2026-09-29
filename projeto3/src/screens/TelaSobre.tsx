@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function SobreScreen() {
+export default function TelaSobre() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sobre este app</Text>
       <Text style={styles.text}>
-        Trabalho prático de Arquitetura de Aplicativos Móveis (IFSP) — contexto "Países do
+        Trabalho prático de Aplicativos Móveis (IFSP) —  "Países do
         mundo".{'\n\n'}
-        Consome a API pública CountriesNow (sem necessidade de chave), navega com Drawer + Tab +
+        Consome a API pública CountriesNow, navega com Drawer + Tab +
         Stack + Modal, tem busca, cache offline e guarda os favoritos e o perfil localmente com
         AsyncStorage.
       </Text>
